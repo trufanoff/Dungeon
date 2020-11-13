@@ -16,7 +16,7 @@ public class ProjectileController {
         }
     }
 
-    public Projectile[] getItems() { 
+    public Projectile[] getItems() {
         return items;
     }
 
