@@ -1,10 +1,10 @@
-package ru.gb.dungeon;
+package ru.gb.dungeon.game;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 
-public class Projectile {
+public class Projectile implements Poolable{
     private TextureRegion texture;
     private Vector2 position;
     private Vector2 velocity;
