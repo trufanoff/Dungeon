@@ -6,6 +6,7 @@ import ru.gb.dungeon.helpers.Assets;
 
 public class Hero extends Unit {
     private String name;
+    private int coins;
 
     public Hero(GameController gc) {
         super(gc, 1, 1, 10);
@@ -14,6 +15,12 @@ public class Hero extends Unit {
         this.hp = hpMax;
         this.texture = Assets.getInstance().getAtlas().findRegion("knight");
         this.textureHp = Assets.getInstance().getAtlas().findRegion("hp");
+        this.coins = 0;
+        this.alpha = 0.2f;
+    }
+
+    public int getCoins() {
+        return coins;
     }
 
     public String getName() {
@@ -30,5 +37,9 @@ public class Hero extends Unit {
                 goTo(gc.getCursorX(), gc.getCursorY());
             }
         }
+        if (this.getHp() < 100) {
+            alpha = 1.0f;
+        }
+
     }
 }

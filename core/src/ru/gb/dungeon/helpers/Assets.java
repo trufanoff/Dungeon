@@ -53,8 +53,8 @@ public class Assets {
         fontParameter.fontFileName = "fonts/Roboto-Medium.ttf";
         fontParameter.fontParameters.size = size;
         fontParameter.fontParameters.color = Color.WHITE;
-//        fontParameter.fontParameters.borderWidth = 1;
-//        fontParameter.fontParameters.borderColor = Color.BLACK;
+        fontParameter.fontParameters.borderWidth = 1;
+        fontParameter.fontParameters.borderColor = Color.BLACK;
         fontParameter.fontParameters.shadowOffsetX = 1;
         fontParameter.fontParameters.shadowOffsetY = 1;
         fontParameter.fontParameters.shadowColor = Color.DARK_GRAY;

@@ -41,4 +41,5 @@ public class MonsterController extends ObjectPool<Monster> {
             m.render(batch, font18);
         }
     }
+
 }
