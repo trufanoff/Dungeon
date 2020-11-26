@@ -15,7 +15,6 @@ public class Monster extends Unit {
         this.texture = Assets.getInstance().getAtlas().findRegion("monster");
         this.textureHp = Assets.getInstance().getAtlas().findRegion("hp");
         this.hp = -1;
-
     }
 
     public void activate(int cellX, int cellY) {

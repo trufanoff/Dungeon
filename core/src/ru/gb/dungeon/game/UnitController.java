@@ -15,6 +15,7 @@ public class UnitController {
     private Unit currentUnit;
     private int index;
     private List<Unit> allUnits;
+    private int round;
 
     public MonsterController getMonsterController() {
         return monsterController;
@@ -22,6 +23,10 @@ public class UnitController {
 
     public Hero getHero() {
         return hero;
+    }
+
+    public int getRound() {
+        return round;
     }
 
     public boolean isItMyTurn(Unit unit) {
@@ -51,15 +56,21 @@ public class UnitController {
         this.allUnits.add(hero);
         this.allUnits.addAll(monsterController.getActiveList());
         this.nextTurn();
+        this.round = 1;
     }
 
     public void nextTurn() {
         index++;
         if (index >= allUnits.size()) {
             index = 0;
+            round++;
         }
         currentUnit = allUnits.get(index);
         currentUnit.startTurn();
+        if (currentUnit.getHp() < currentUnit.getHpMax()) {
+            currentUnit.setHp(currentUnit.getHp() + 1);
+        }
+
     }
 
     public void render(SpriteBatch batch, BitmapFont font18) {

@@ -26,6 +26,7 @@ public abstract class Unit implements Poolable {
     float movementMax;
     int targetX;
     int targetY;
+    float alpha;
     private float innerTimer;
 
     public Unit(GameController gc, int cellX, int cellY, int hpMax) {
@@ -42,6 +43,7 @@ public abstract class Unit implements Poolable {
         this.movementMax = 0.2f;
         this.attackRange = 2;
         this.innerTimer = MathUtils.random(1000.0f);
+        this.alpha = 1.0f;
     }
 
     public void goTo(int argCellX, int argCellY) {
@@ -64,6 +66,18 @@ public abstract class Unit implements Poolable {
     public boolean canIAttackThisTarget(Unit target) {
         return cellX - target.getCellX() == 0 && Math.abs(cellY - target.getCellY()) <= attackRange ||
                 cellY - target.getCellY() == 0 && Math.abs(cellX - target.getCellX()) <= attackRange;
+    }
+
+    public int getHp() {
+        return hp;
+    }
+
+    public void setHp(int hp) {
+        this.hp = hp;
+    }
+
+    public int getHpMax(){
+        return hpMax;
     }
 
     public void startTurn() {
@@ -142,13 +156,17 @@ public abstract class Unit implements Poolable {
             py = cellY * GameMap.CELLS_SIZE + (targetY - cellY) * (movementTime / movementMax) * GameMap.CELLS_SIZE;
         }
         batch.draw(texture, px, py);
-        batch.setColor(0.0f, 0.0f, 0.0f, 1.0f);
+        batch.setColor(0.0f, 0.0f, 0.0f, alpha);
 
         float barX = px, barY = py + MathUtils.sin(innerTimer * 5.0f) * 2;
         batch.draw(textureHp, barX + 1, barY + 52 - 1, 58, 10);
-        batch.setColor(0.7f, 0.0f, 0.0f, 1.0f);
+        batch.setColor(0.7f, 0.0f, 0.0f, alpha);
+
+
         batch.draw(textureHp, barX + 2, barY + 52, 56, 8);
-        batch.setColor(0.0f, 1.0f, 0.0f, 1.0f);
+        batch.setColor(0.0f, 1.0f, 0.0f, alpha);
+
+
         batch.draw(textureHp, barX + 2, barY + 52, (float) hp / hpMax * 56, 8);
         batch.setColor(1.0f, 1.0f, 1.0f, 1.0f);
 
